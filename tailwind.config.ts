@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -81,12 +80,17 @@ export default {
         "blink": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
+        },
+        "underline": {
+          "0%, 100%": { transform: "scaleX(1)", opacity: "1" },
+          "50%": { transform: "scaleX(0.5)", opacity: "0.5" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "cursor-blink": "blink 1s step-end infinite",
+        "underline": "underline 2s ease-in-out infinite"
       }
     }
   },

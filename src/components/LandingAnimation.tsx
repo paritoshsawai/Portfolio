@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const CHARACTERS = "!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const FINAL_TEXT = "Paritosh.Dev";
-const SCRAMBLE_DURATION = 3000; // 3 seconds total
-const STEP_DURATION = 50; // 50ms per step
+const SCRAMBLE_DURATION = 3000;
+const STEP_DURATION = 50;
 
 const LandingAnimation = ({ onComplete }: { onComplete: () => void }) => {
   const [text, setText] = useState("");
@@ -57,13 +57,17 @@ const LandingAnimation = ({ onComplete }: { onComplete: () => void }) => {
           <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            className="text-center"
+            className="text-center relative"
           >
             <h1 
               className="font-mono text-4xl md:text-6xl lg:text-7xl font-bold 
                          bg-clip-text text-transparent bg-gradient-to-r 
                          from-blue-400 via-purple-500 to-pink-500
                          shadow-lg tracking-wider
+                         after:content-[''] after:absolute after:bottom-0 
+                         after:left-0 after:w-full after:h-[2px] 
+                         after:bg-accent after:origin-left
+                         after:animate-[underline_2s_ease-in-out_infinite]
                          [text-shadow:_0_0_15px_rgba(148,0,255,0.3)]"
             >
               {text}
