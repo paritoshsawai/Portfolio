@@ -2,6 +2,14 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, ExternalLink, Calendar } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+const formSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  subject: z.string().min(1, { message: "Subject is required" }),
+  message: z.string().min(1, { message: "Message is required" })
+});
 
 const Contact = () => {
   const { toast } = useToast();
@@ -12,20 +20,61 @@ const Contact = () => {
     message: ''
   });
   
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error for this field when user types
+    if (formErrors[name]) {
+      setFormErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
+  };
+
+  const validateForm = () => {
+    try {
+      formSchema.parse(formData);
+      setFormErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errors: Record<string, string> = {};
+        error.errors.forEach(err => {
+          if (err.path[0]) {
+            errors[err.path[0] as string] = err.message;
+          }
+        });
+        setFormErrors(errors);
+      }
+      return false;
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast({
+        title: "Form Error",
+        description: "Please check the form for errors.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    // Simulate form submission with toast notifications
+    // Simulate form submission with a delay
     setTimeout(() => {
       setIsSubmitting(false);
       
@@ -45,6 +94,12 @@ const Contact = () => {
     }, 1500);
   };
 
+  const getFieldError = (fieldName: string) => {
+    return formErrors[fieldName] ? (
+      <p className="text-red-500 text-xs mt-1">{formErrors[fieldName]}</p>
+    ) : null;
+  };
+
   return (
     <div className="py-8">
       {/* VS Code-like file header */}
@@ -58,6 +113,7 @@ const Contact = () => {
       </h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Left column with contact info */}
         <div>
           <div className="code-block mb-6 relative rounded-md overflow-hidden border border-border">
             {/* VS Code-like line numbers */}
@@ -80,6 +136,7 @@ const Contact = () => {
             </div>
           </div>
           
+          {/* Contact information boxes */}
           <div className="space-y-6">
             <div className="bg-sidebar/30 p-4 border border-border rounded-md hover:bg-sidebar/40 transition-all duration-300">
               <div className="flex items-center">
@@ -123,6 +180,7 @@ const Contact = () => {
             </div>
           </div>
           
+          {/* Availability section */}
           <div className="mt-8">
             <h2 className="text-xl font-medium mb-4 flex items-center">
               <Calendar className="mr-2 text-accent" size={20} />
@@ -140,6 +198,7 @@ const Contact = () => {
           </div>
         </div>
         
+        {/* Right column with form */}
         <div>
           <form onSubmit={handleSubmit} className="space-y-5 bg-sidebar/20 p-6 rounded-md border border-border">
             <h2 className="text-xl font-medium mb-4">Send me a message</h2>
@@ -152,9 +211,9 @@ const Contact = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                required
-                className="w-full px-3 py-2 bg-sidebar border border-border rounded focus:outline-none focus:border-accent text-foreground"
+                className={`w-full px-3 py-2 bg-sidebar border ${formErrors.name ? 'border-red-500' : 'border-border'} rounded focus:outline-none focus:border-accent text-foreground`}
               />
+              {getFieldError('name')}
             </div>
             
             <div>
@@ -165,9 +224,9 @@ const Contact = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                required
-                className="w-full px-3 py-2 bg-sidebar border border-border rounded focus:outline-none focus:border-accent text-foreground"
+                className={`w-full px-3 py-2 bg-sidebar border ${formErrors.email ? 'border-red-500' : 'border-border'} rounded focus:outline-none focus:border-accent text-foreground`}
               />
+              {getFieldError('email')}
             </div>
             
             <div>
@@ -178,9 +237,9 @@ const Contact = () => {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                required
-                className="w-full px-3 py-2 bg-sidebar border border-border rounded focus:outline-none focus:border-accent text-foreground"
+                className={`w-full px-3 py-2 bg-sidebar border ${formErrors.subject ? 'border-red-500' : 'border-border'} rounded focus:outline-none focus:border-accent text-foreground`}
               />
+              {getFieldError('subject')}
             </div>
             
             <div>
@@ -190,10 +249,10 @@ const Contact = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                required
                 rows={5}
-                className="w-full px-3 py-2 bg-sidebar border border-border rounded focus:outline-none focus:border-accent text-foreground resize-none"
+                className={`w-full px-3 py-2 bg-sidebar border ${formErrors.message ? 'border-red-500' : 'border-border'} rounded focus:outline-none focus:border-accent text-foreground resize-none`}
               />
+              {getFieldError('message')}
             </div>
             
             <button 
