@@ -1,7 +1,10 @@
+
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, ExternalLink, Calendar } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,11 +13,6 @@ const Contact = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState({
-    visible: false,
-    isError: false,
-    message: ''
-  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -27,13 +25,14 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Simulate form submission with toast notifications
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitMessage({
-        visible: true,
-        isError: false,
-        message: 'Thank you for your message! I will get back to you soon.'
+      
+      toast({
+        title: "Message Sent",
+        description: "Thank you for your message! I will get back to you soon.",
+        variant: "default",
       });
       
       // Reset form
@@ -43,33 +42,42 @@ const Contact = () => {
         subject: '',
         message: ''
       });
-      
-      // Hide message after 5 seconds
-      setTimeout(() => {
-        setSubmitMessage({
-          ...submitMessage,
-          visible: false
-        });
-      }, 5000);
     }, 1500);
   };
 
   return (
     <div className="py-8">
+      {/* VS Code-like file header */}
+      <div className="flex items-center bg-sidebar/70 text-sidebar-foreground text-xs px-3 py-1 border-b border-border mb-4 rounded-t-md">
+        <span className="mr-2">Contact.tsx</span>
+        <span className="ml-auto">TypeScript</span>
+      </div>
+      
       <h1 className="text-3xl font-bold mb-8">
         <span className="code-keyword">async function</span> <span className="code-function">contactMe</span>() {'{'}
       </h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
-          <div className="code-block mb-6">
-            <pre>
-              <span className="code-comment">/**
+          <div className="code-block mb-6 relative rounded-md overflow-hidden border border-border">
+            {/* VS Code-like line numbers */}
+            <div className="flex">
+              <div className="py-3 px-2 text-sidebar-foreground/60 bg-sidebar/40 text-xs font-mono text-right select-none">
+                <div className="pr-2">01</div>
+                <div className="pr-2">02</div>
+                <div className="pr-2">03</div>
+                <div className="pr-2">04</div>
+                <div className="pr-2">05</div>
+              </div>
+              
+              <pre className="py-3 px-4 overflow-x-auto flex-1 text-sm">
+                <span className="code-comment">/**
  * Get in touch with me through
  * this contact form or using the
  * contact information provided
  */</span>
-            </pre>
+              </pre>
+            </div>
           </div>
           
           <div className="space-y-6">
@@ -200,12 +208,6 @@ const Contact = () => {
                 </>
               )}
             </button>
-            
-            {submitMessage.visible && (
-              <div className={`p-4 rounded-md ${submitMessage.isError ? 'bg-red-900/50 border border-red-700' : 'bg-green-900/50 border border-green-700'}`}>
-                {submitMessage.message}
-              </div>
-            )}
           </form>
         </div>
       </div>
