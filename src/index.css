@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -15,7 +15,7 @@
     --inactive-tab: 0 0% 20%;
     --inactive-tab-hover: 0 0% 25%;
     --border: 0 0% 25%;
-    --accent: 250 86% 60%;
+    --accent: 200 100% 40%;
     --accent-foreground: 0 0% 98%;
     
     --card: 0 0% 100%;
@@ -28,13 +28,13 @@
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent-highlight: 250 86% 55%;
+    --accent-highlight: 200 100% 37%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border-highlight: 0 0% 30%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 250 86% 60%;
-    --radius: 0.375rem;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.25rem;
 
     /* Syntax highlighting colors */
     --syntax-keyword: 340 90% 65%;
@@ -55,10 +55,6 @@
     @apply bg-background text-foreground font-vscode m-0 p-0;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
-  }
-
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -70,7 +66,7 @@
 
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--border));
-    border-radius: 6px;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -97,13 +93,11 @@
     height: 36px;
     min-width: 140px;
     user-select: none;
-    transition: background-color 0.2s ease;
   }
   
   .vscode-tab.active {
     @apply bg-active-tab text-primary;
     border-bottom: 1px solid transparent;
-    box-shadow: inset 0 2px 0 rgba(139, 92, 246, 0.7);
   }
   
   .vscode-tab:hover:not(.active) {
@@ -119,30 +113,25 @@
   }
   
   .vscode-sidebar-item {
-    @apply flex items-center px-4 py-1.5 text-sidebar-foreground hover:bg-sidebar-active cursor-pointer transition-all duration-200;
+    @apply flex items-center px-4 py-1.5 text-sidebar-foreground hover:bg-sidebar-active cursor-pointer;
   }
   
   .vscode-sidebar-item.active {
     @apply bg-sidebar-active text-primary;
-    border-left: 2px solid hsl(var(--accent));
   }
   
   .vscode-sidebar-item svg {
-    @apply mr-2 w-4 h-4 transition-transform duration-200;
-  }
-
-  .vscode-sidebar-item:hover svg {
-    @apply transform scale-110;
+    @apply mr-2 w-4 h-4;
   }
   
   .code-block {
-    @apply font-mono text-sm rounded-md p-4 my-4 overflow-x-auto border border-border/50 shadow-sm;
+    @apply font-mono text-sm rounded p-4 my-4 overflow-x-auto;
     background-color: hsl(var(--background) / 0.7);
-    backdrop-filter: blur(8px);
+    border: 1px solid hsl(var(--border));
   }
 
   .active-line {
-    @apply bg-[#232330] border-l-2 border-accent pl-2;
+    @apply bg-[#232330] border-l-2 border-accent;
   }
   
   .code-comment {
@@ -173,44 +162,5 @@
     @apply fixed bottom-0 left-0 right-0 flex justify-between items-center text-xs px-4 py-1 border-t border-border bg-sidebar text-sidebar-foreground;
     height: 22px;
     z-index: 10;
-  }
-
-  /* Enhanced UI Components */
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-md hover:translate-y-[-5px] hover:border-accent/50;
-  }
-
-  .glass-panel {
-    @apply bg-sidebar/30 border border-border rounded-lg backdrop-blur-sm;
-  }
-  
-  .pill-tag {
-    @apply px-3 py-1 rounded-full text-xs font-medium bg-accent/20 text-accent inline-flex items-center gap-1;
-  }
-
-  .hover-scale {
-    @apply transition-transform duration-200 hover:scale-[1.03];
-  }
-
-  .underline-link {
-    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
-  }
-  
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, hsl(var(--accent)), hsl(var(--accent-highlight)));
-  }
-  
-  .shadow-glow {
-    @apply shadow-[0_0_15px_rgba(139,92,246,0.3)];
-  }
-
-  .section-heading {
-    @apply text-2xl font-bold mb-6 inline-block;
-    background: linear-gradient(90deg, #ffffff, #c5c5c5);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 2px 10px rgba(255,255,255,0.1);
   }
 }
