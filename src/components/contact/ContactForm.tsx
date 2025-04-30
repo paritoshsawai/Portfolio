@@ -75,19 +75,21 @@ const ContactForm = () => {
     
     setIsSubmitting(true);
     
-    // EmailJS integration to send emails
+    // EmailJS integration to send emails directly to paritoshsawai@gmail.com
     const templateParams = {
+      to_email: 'paritoshsawai@gmail.com', // Recipient email (yours)
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message
     };
 
+    // Using EmailJS public API (this is safe to expose in client-side code)
     emailjs.send(
-      'service_id', // Replace with your EmailJS service ID
-      'template_id', // Replace with your EmailJS template ID
+      'service_portfolio', // Your EmailJS service ID
+      'template_contact', // Your EmailJS template ID
       templateParams,
-      'your_public_key' // Replace with your EmailJS public key
+      'rktQAmkRnKGKU6rNt' // Your EmailJS public key
     )
     .then((response) => {
       if (response.status === 200) {
@@ -111,7 +113,7 @@ const ContactForm = () => {
       console.error('Email error:', error);
       toast({
         title: "Failed to Send",
-        description: "There was an error sending your message. Please try again.",
+        description: "There was an error sending your message. Please try again or contact me directly via email.",
         variant: "destructive",
       });
       setIsSubmitting(false);
