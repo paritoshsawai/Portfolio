@@ -15,6 +15,7 @@ import Experience from "./pages/Experience";
 import Education from "./pages/Education";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import NetworkIndicator from "./components/NetworkIndicator";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
+            <NetworkIndicator />
           </BrowserRouter>
         )}
       </TooltipProvider>

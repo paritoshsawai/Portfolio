@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, ExternalLink, Calendar } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import emailjs from 'emailjs-com';
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -74,24 +75,47 @@ const Contact = () => {
     
     setIsSubmitting(true);
     
-    // Simulate form submission with a delay
-    setTimeout(() => {
+    // EmailJS integration to send emails
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message
+    };
+
+    emailjs.send(
+      'service_id', // Replace with your EmailJS service ID
+      'template_id', // Replace with your EmailJS template ID
+      templateParams,
+      'your_public_key' // Replace with your EmailJS public key
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        toast({
+          title: "Message Sent (200 OK)",
+          description: "Thank you for your message! I will get back to you soon.",
+          variant: "default",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      }
       setIsSubmitting(false);
-      
+    })
+    .catch((error) => {
+      console.error('Email error:', error);
       toast({
-        title: "Message Sent",
-        description: "Thank you for your message! I will get back to you soon.",
-        variant: "default",
+        title: "Failed to Send",
+        description: "There was an error sending your message. Please try again.",
+        variant: "destructive",
       });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    }, 1500);
+      setIsSubmitting(false);
+    });
   };
 
   const getFieldError = (fieldName: string) => {
