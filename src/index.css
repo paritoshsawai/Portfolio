@@ -83,7 +83,7 @@
   }
   
   .vscode-tabs {
-    @apply flex overflow-x-auto pl-[240px];
+    @apply flex overflow-x-auto;
     height: 36px;
     border-bottom: 1px solid hsl(var(--border));
   }
@@ -105,7 +105,7 @@
   }
   
   .vscode-content {
-    @apply pl-[240px] pt-[36px] h-screen overflow-auto;
+    @apply pt-[36px] h-screen overflow-auto;
   }
   
   .vscode-explorer-section {

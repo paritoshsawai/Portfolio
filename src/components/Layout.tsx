@@ -1,14 +1,22 @@
 
 import { Outlet, useLocation, Link } from "react-router-dom";
-import { Github, Linkedin, FileText, Home, User, Wrench, FolderClosed, Briefcase, GraduationCap, Mail } from "lucide-react";
+import { Github, Linkedin, FileText, Home, User, Wrench, FolderClosed, Briefcase, GraduationCap, Mail, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useIsMobile } from "../hooks/use-mobile";
 
 const Layout = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setActiveTab(location.pathname);
+  }, [location.pathname]);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
   }, [location.pathname]);
 
   // Define the tabs for the VS Code interface
@@ -27,8 +35,18 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      {/* VS Code Sidebar */}
-      <aside className="vscode-sidebar">
+      {/* Mobile menu button */}
+      {isMobile && (
+        <button 
+          className="fixed top-2 left-2 z-30 p-2 bg-sidebar rounded-md"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      )}
+      
+      {/* VS Code Sidebar - responsive */}
+      <aside className={`vscode-sidebar transition-transform duration-300 ${isMobile && !mobileMenuOpen ? '-translate-x-full' : 'translate-x-0'}`}>
         {/* Social links */}
         <div className="flex justify-center gap-3 py-3 border-b border-border">
           <a href="https://github.com/paritoshsawai" target="_blank" rel="noopener noreferrer" 
@@ -67,8 +85,16 @@ const Layout = () => {
         </div>
       </aside>
       
-      {/* VS Code Tabs */}
-      <div className="vscode-tabs">
+      {/* Overlay to close sidebar on mobile when clicked outside */}
+      {isMobile && mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-20"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+      
+      {/* VS Code Tabs - adjusted for mobile */}
+      <div className={`vscode-tabs ${isMobile ? 'pl-0' : 'pl-[240px]'}`}>
         {tabs.map((tab) => (
           <Link
             key={tab.path}
@@ -81,8 +107,8 @@ const Layout = () => {
         ))}
       </div>
       
-      {/* Main content area */}
-      <main className="vscode-content pb-[22px]">
+      {/* Main content area - adjusted for mobile */}
+      <main className={`vscode-content pb-[22px] ${isMobile ? 'pl-0' : 'pl-[240px]'}`}>
         <div className="p-6 max-w-5xl mx-auto">
           <Outlet />
         </div>
