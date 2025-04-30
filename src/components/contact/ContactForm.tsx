@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -75,26 +74,25 @@ const ContactForm = () => {
     
     setIsSubmitting(true);
     
-    // EmailJS integration to send emails directly to paritoshsawai@gmail.com
+    // EmailJS integration with your actual credentials
     const templateParams = {
-      to_email: 'paritoshsawai@gmail.com', // Recipient email (yours)
+      to_email: 'paritoshsawai@gmail.com', // Recipient email
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message
     };
 
-    // Using EmailJS public API (this is safe to expose in client-side code)
     emailjs.send(
-      'service_portfolio', // Your EmailJS service ID
-      'template_contact', // Your EmailJS template ID
+      'service_f9xx5by', // Your EmailJS service ID
+      'template_zk8c7xr', // Your EmailJS template ID
       templateParams,
-      'rktQAmkRnKGKU6rNt' // Your EmailJS public key
+      'NLel7a6EoMEzUxFzE' // Your EmailJS public key
     )
     .then((response) => {
       if (response.status === 200) {
         toast({
-          title: "Message Sent (200 OK)",
+          title: "Message Sent",
           description: "Thank you for your message! I will get back to you soon.",
           variant: "default",
         });
