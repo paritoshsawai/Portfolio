@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -74,13 +75,13 @@ const ContactForm = () => {
     
     setIsSubmitting(true);
     
-    // EmailJS integration with your actual credentials
+    // EmailJS integration - fixed to ensure recipient is set correctly
     const templateParams = {
-      to_email: 'paritoshsawai@gmail.com', // Recipient email
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
-      message: formData.message
+      message: formData.message,
+      reply_to: formData.email
     };
 
     emailjs.send(
