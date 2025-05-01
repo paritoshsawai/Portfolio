@@ -2,7 +2,6 @@
 import React from 'react';
 import CodeHeader from '../components/common/CodeHeader';
 import ContactInfo from '../components/contact/ContactInfo';
-import ContactForm from '../components/contact/ContactForm';
 import { useIsMobile } from '../hooks/use-mobile';
 import {
   Drawer,
@@ -22,8 +21,8 @@ const Contact = () => {
         <span className="code-keyword">async function</span> <span className="code-function">contactMe</span>() {'{'}
       </h1>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Left column with contact info - responsive */}
+      <div className="flex justify-center">
+        {/* Contact info - responsive */}
         {isMobile ? (
           <Drawer>
             <DrawerTrigger className="bg-sidebar mb-6 px-4 py-2 rounded-md flex items-center justify-center w-full">
@@ -36,13 +35,10 @@ const Contact = () => {
             </DrawerContent>
           </Drawer>
         ) : (
-          <ContactInfo />
+          <div className="max-w-xl w-full">
+            <ContactInfo />
+          </div>
         )}
-        
-        {/* Right column with form */}
-        <div>
-          <ContactForm />
-        </div>
       </div>
       
       <div className="mt-8">
