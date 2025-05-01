@@ -1,13 +1,29 @@
 
 import React from 'react';
 import { Code, Server, Database, GitBranch, BarChart } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+
+// Custom skill icons
+import JavaScriptIcon from '../components/icons/JavaScriptIcon';
+import TypeScriptIcon from '../components/icons/TypeScriptIcon';
+import PythonIcon from '../components/icons/PythonIcon';
+import HTML5Icon from '../components/icons/HTML5Icon';
+import CSS3Icon from '../components/icons/CSS3Icon';
+import SQLIcon from '../components/icons/SQLIcon';
 
 const Skills = () => {
   const skillCategories = [
     {
       name: "Programming Languages",
       icon: <Code className="text-accent" size={20} />,
-      skills: ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"]
+      skills: [
+        { name: "JavaScript", icon: <JavaScriptIcon /> },
+        { name: "TypeScript", icon: <TypeScriptIcon /> },
+        { name: "Python", icon: <PythonIcon /> },
+        { name: "HTML5", icon: <HTML5Icon /> },
+        { name: "CSS3", icon: <CSS3Icon /> },
+        { name: "SQL", icon: <SQLIcon /> }
+      ]
     },
     {
       name: "Frameworks & Libraries",
@@ -52,18 +68,36 @@ const Skills = () => {
             </h2>
             
             <div className="flex flex-wrap gap-2 pl-4">
-              {category.skills.map((skill, skillIndex) => (
-                <div 
-                  key={skillIndex} 
-                  className="px-3 py-1.5 bg-sidebar rounded border border-border flex items-center gap-1.5 hover:bg-sidebar/70 transition-colors"
-                >
-                  {skillIndex === 0 ? (
-                    <span className="active-line pl-2">{skill}</span>
-                  ) : (
-                    skill
-                  )}
-                </div>
-              ))}
+              {Array.isArray(category.skills) && category.skills.map((skill, skillIndex) => {
+                // Check if the skill is an object with name and icon
+                if (typeof skill === 'object' && skill !== null) {
+                  return (
+                    <div 
+                      key={skillIndex} 
+                      className="px-3 py-1.5 bg-sidebar rounded border border-border flex items-center gap-1.5 hover:bg-sidebar/70 transition-colors"
+                    >
+                      {skill.icon}
+                      <span className={skillIndex === 0 ? "active-line pl-2" : ""}>
+                        {skill.name}
+                      </span>
+                    </div>
+                  );
+                } else {
+                  // For skills that are just strings
+                  return (
+                    <div 
+                      key={skillIndex} 
+                      className="px-3 py-1.5 bg-sidebar rounded border border-border flex items-center gap-1.5 hover:bg-sidebar/70 transition-colors"
+                    >
+                      {skillIndex === 0 ? (
+                        <span className="active-line pl-2">{skill}</span>
+                      ) : (
+                        skill
+                      )}
+                    </div>
+                  );
+                }
+              })}
             </div>
             
             <p className="mt-2">{'}'},</p>
