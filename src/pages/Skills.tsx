@@ -10,6 +10,12 @@ import PythonIcon from '../components/icons/PythonIcon';
 import HTML5Icon from '../components/icons/HTML5Icon';
 import CSS3Icon from '../components/icons/CSS3Icon';
 import SQLIcon from '../components/icons/SQLIcon';
+import ReactIcon from '../components/icons/ReactIcon';
+import NodeIcon from '../components/icons/NodeIcon';
+import GitIcon from '../components/icons/GitIcon';
+import MongoDBIcon from '../components/icons/MongoDBIcon';
+import DockerIcon from '../components/icons/DockerIcon';
+import TailwindIcon from '../components/icons/TailwindIcon';
 
 const Skills = () => {
   const skillCategories = [
@@ -28,22 +34,51 @@ const Skills = () => {
     {
       name: "Frameworks & Libraries",
       icon: <Server className="text-accent" size={20} />,
-      skills: ["React.js", "Node.js", "Express.js", "Redux", "Next.js", "TailwindCSS", "Material UI", "Bootstrap"]
+      skills: [
+        { name: "React.js", icon: <ReactIcon /> },
+        { name: "Node.js", icon: <NodeIcon /> },
+        { name: "Express.js", icon: <NodeIcon /> },
+        { name: "Redux", icon: <ReactIcon /> },
+        { name: "Next.js", icon: <ReactIcon /> },
+        { name: "TailwindCSS", icon: <TailwindIcon /> },
+        { name: "Material UI", icon: <ReactIcon /> },
+        { name: "Bootstrap", icon: <CSS3Icon /> }
+      ]
     },
     {
       name: "Tools & Technologies",
       icon: <GitBranch className="text-accent" size={20} />,
-      skills: ["Git", "GitHub", "VS Code", "Webpack", "Docker", "AWS", "Jest", "Cypress"]
+      skills: [
+        { name: "Git", icon: <GitIcon /> },
+        { name: "GitHub", icon: <GitIcon /> },
+        { name: "VS Code", icon: <Code /> },
+        { name: "Webpack", icon: <NodeIcon /> },
+        { name: "Docker", icon: <DockerIcon /> },
+        { name: "AWS", icon: <Server /> },
+        { name: "Jest", icon: <ReactIcon /> },
+        { name: "Cypress", icon: <Code /> }
+      ]
     },
     {
       name: "Databases",
       icon: <Database className="text-accent" size={20} />,
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "Firebase"]
+      skills: [
+        { name: "MongoDB", icon: <MongoDBIcon /> },
+        { name: "PostgreSQL", icon: <Database /> },
+        { name: "MySQL", icon: <Database /> },
+        { name: "Firebase", icon: <Database /> }
+      ]
     },
     {
       name: "Methodologies",
       icon: <BarChart className="text-accent" size={20} />,
-      skills: ["Agile/Scrum", "RESTful API Design", "Responsive Web Design", "Test-Driven Development", "CI/CD"]
+      skills: [
+        { name: "Agile/Scrum", icon: <BarChart /> },
+        { name: "RESTful API Design", icon: <Server /> },
+        { name: "Responsive Web Design", icon: <HTML5Icon /> },
+        { name: "Test-Driven Development", icon: <Code /> },
+        { name: "CI/CD", icon: <GitIcon /> }
+      ]
     }
   ];
 
