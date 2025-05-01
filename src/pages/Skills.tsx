@@ -103,36 +103,17 @@ const Skills = () => {
             </h2>
             
             <div className="flex flex-wrap gap-2 pl-4">
-              {Array.isArray(category.skills) && category.skills.map((skill, skillIndex) => {
-                // Check if the skill is an object with name and icon
-                if (typeof skill === 'object' && skill !== null) {
-                  return (
-                    <div 
-                      key={skillIndex} 
-                      className="px-3 py-1.5 bg-sidebar rounded border border-border flex items-center gap-1.5 hover:bg-sidebar/70 transition-colors"
-                    >
-                      {skill.icon}
-                      <span className={skillIndex === 0 ? "active-line pl-2" : ""}>
-                        {skill.name}
-                      </span>
-                    </div>
-                  );
-                } else {
-                  // For skills that are just strings
-                  return (
-                    <div 
-                      key={skillIndex} 
-                      className="px-3 py-1.5 bg-sidebar rounded border border-border flex items-center gap-1.5 hover:bg-sidebar/70 transition-colors"
-                    >
-                      {skillIndex === 0 ? (
-                        <span className="active-line pl-2">{skill}</span>
-                      ) : (
-                        skill
-                      )}
-                    </div>
-                  );
-                }
-              })}
+              {category.skills.map((skill, skillIndex) => (
+                <div 
+                  key={skillIndex} 
+                  className="px-3 py-1.5 bg-sidebar rounded border border-border flex items-center gap-1.5 hover:bg-sidebar/70 transition-colors"
+                >
+                  {skill.icon}
+                  <span className={skillIndex === 0 ? "active-line pl-2" : ""}>
+                    {skill.name}
+                  </span>
+                </div>
+              ))}
             </div>
             
             <p className="mt-2">{'}'},</p>
