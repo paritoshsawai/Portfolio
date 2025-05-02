@@ -28,9 +28,9 @@ const Home = () => {
   return (
     <div className="py-8 space-y-8">
       <div className="flex flex-col items-start mb-6">
-        <h1 className="text-4xl font-bold code-variable">Paritosh Sawai</h1>
-        <div className="h-8 mt-2 flex items-center">
-          <p className="text-xl text-accent">{displayText}</p>
+        <h1 className="text-4xl font-bold code-variable mb-4">Paritosh Sawai</h1>
+        <div className="min-h-12 flex flex-wrap items-center">
+          <p className="text-xl text-accent break-words">{displayText}</p>
           <div className="h-5 w-2 bg-accent ml-1 animate-cursor-blink"></div>
         </div>
       </div>

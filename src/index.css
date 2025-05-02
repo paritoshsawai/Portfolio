@@ -86,12 +86,14 @@
     @apply flex overflow-x-auto;
     height: 36px;
     border-bottom: 1px solid hsl(var(--border));
+    margin-top: 10px; /* Add space for mobile menu button */
   }
   
   .vscode-tab {
     @apply flex items-center px-4 border-r border-border bg-inactive-tab text-sidebar-foreground;
     height: 36px;
-    min-width: 140px;
+    min-width: 100px;
+    max-width: 180px;
     user-select: none;
   }
   
@@ -105,7 +107,7 @@
   }
   
   .vscode-content {
-    @apply pt-[36px] h-screen overflow-auto;
+    @apply pt-[46px] h-screen overflow-auto;
   }
   
   .vscode-explorer-section {
@@ -162,5 +164,25 @@
     @apply fixed bottom-0 left-0 right-0 flex justify-between items-center text-xs px-4 py-1 border-t border-border bg-sidebar text-sidebar-foreground;
     height: 22px;
     z-index: 10;
+  }
+}
+
+/* Responsive adjustments for header and titles */
+@media (max-width: 640px) {
+  .vscode-tabs {
+    margin-top: 12px;
+    padding-right: 40px; /* Make room for mobile menu button */
+  }
+  
+  .vscode-tab {
+    min-width: 80px;
+  }
+
+  .text-4xl {
+    @apply text-3xl;
+  }
+  
+  .text-xl {
+    @apply text-lg;
   }
 }

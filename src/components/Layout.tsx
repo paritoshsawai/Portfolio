@@ -35,10 +35,10 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      {/* Mobile menu button */}
+      {/* Mobile menu button - moved to top-right for better spacing */}
       {isMobile && (
         <button 
-          className="fixed top-2 left-2 z-30 p-2 bg-sidebar rounded-md"
+          className="fixed top-2 right-3 z-30 p-2 bg-sidebar rounded-md"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -93,8 +93,8 @@ const Layout = () => {
         />
       )}
       
-      {/* VS Code Tabs - adjusted for mobile */}
-      <div className={`vscode-tabs ${isMobile ? 'pl-0' : 'pl-[240px]'}`}>
+      {/* VS Code Tabs - adjusted for mobile with more padding */}
+      <div className={`vscode-tabs ${isMobile ? 'pl-0 pr-12' : 'pl-[240px]'} mt-0`}>
         {tabs.map((tab) => (
           <Link
             key={tab.path}
@@ -102,13 +102,13 @@ const Layout = () => {
             className={`vscode-tab ${location.pathname === tab.path ? 'active' : ''}`}
           >
             {tab.icon}
-            <span className="ml-2">{tab.label}</span>
+            <span className="ml-2 truncate max-w-[80px]">{tab.label}</span>
           </Link>
         ))}
       </div>
       
-      {/* Main content area - adjusted for mobile */}
-      <main className={`vscode-content pb-[22px] ${isMobile ? 'pl-0' : 'pl-[240px]'}`}>
+      {/* Main content area - adjusted for mobile and added top padding */}
+      <main className={`vscode-content pb-[22px] pt-2 ${isMobile ? 'pl-0 mt-2' : 'pl-[240px]'}`}>
         <div className="p-6 max-w-5xl mx-auto">
           <Outlet />
         </div>
