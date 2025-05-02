@@ -35,16 +35,18 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      {/* Mobile menu button - positioned on the left side, always visible */}
-      <button 
-        className="fixed top-2 left-3 z-30 p-2 bg-sidebar rounded-md"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      >
-        {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
+      {/* Mobile menu button - moved to top-right for better spacing */}
+      {isMobile && (
+        <button 
+          className="fixed top-2 right-3 z-30 p-2 bg-sidebar rounded-md"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      )}
       
       {/* VS Code Sidebar - responsive */}
-      <aside className={`vscode-sidebar transition-transform duration-300 ${!mobileMenuOpen ? '-translate-x-full' : 'translate-x-0'}`}>
+      <aside className={`vscode-sidebar transition-transform duration-300 ${isMobile && !mobileMenuOpen ? '-translate-x-full' : 'translate-x-0'}`}>
         {/* Social links */}
         <div className="flex justify-center gap-3 py-3 border-b border-border">
           <a href="https://github.com/paritoshsawai" target="_blank" rel="noopener noreferrer" 
@@ -83,16 +85,16 @@ const Layout = () => {
         </div>
       </aside>
       
-      {/* Overlay to close sidebar when clicked outside */}
-      {mobileMenuOpen && (
+      {/* Overlay to close sidebar on mobile when clicked outside */}
+      {isMobile && mobileMenuOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-20"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
       
-      {/* VS Code Tabs - adjusted to account for menu button on left */}
-      <div className="vscode-tabs pl-12">
+      {/* VS Code Tabs - adjusted for mobile with more padding */}
+      <div className={`vscode-tabs ${isMobile ? 'pl-0 pr-12' : 'pl-[240px]'} mt-0`}>
         {tabs.map((tab) => (
           <Link
             key={tab.path}
@@ -105,8 +107,8 @@ const Layout = () => {
         ))}
       </div>
       
-      {/* Main content area - with top padding to avoid overlap */}
-      <main className="vscode-content pb-[22px] pt-2">
+      {/* Main content area - adjusted for mobile and added top padding */}
+      <main className={`vscode-content pb-[22px] pt-2 ${isMobile ? 'pl-0 mt-2' : 'pl-[240px]'}`}>
         <div className="p-6 max-w-5xl mx-auto">
           <Outlet />
         </div>

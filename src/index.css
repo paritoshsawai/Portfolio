@@ -86,8 +86,7 @@
     @apply flex overflow-x-auto;
     height: 36px;
     border-bottom: 1px solid hsl(var(--border));
-    margin-top: 10px; /* Add space for menu button */
-    padding-left: 48px; /* Make room for the menu button */
+    margin-top: 10px; /* Add space for mobile menu button */
   }
   
   .vscode-tab {
@@ -171,7 +170,8 @@
 /* Responsive adjustments for header and titles */
 @media (max-width: 640px) {
   .vscode-tabs {
-    padding-left: 48px; /* Consistent space for menu button */
+    margin-top: 12px;
+    padding-right: 40px; /* Make room for mobile menu button */
   }
   
   .vscode-tab {
