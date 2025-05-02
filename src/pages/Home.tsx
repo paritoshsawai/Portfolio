@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -5,6 +6,7 @@ const Home = () => {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [lineNumbers, setLineNumbers] = useState<string[]>([]);
   
   const titlePhrases = [
@@ -20,33 +22,32 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (isTyping) {
-      // Display the entire phrase at once
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (isTyping && !isDeleting) {
+      // Display the full phrase at once
       setDisplayText(titlePhrases[currentPhraseIndex]);
       
-      // Wait before starting to erase
-      const pauseTimer = setTimeout(() => {
-        setIsTyping(false);
-      }, 2000); // 2 seconds display time
-      
-      return () => clearTimeout(pauseTimer);
-    } else {
-      // Erase the phrase
-      const eraseTimer = setTimeout(() => {
-        setDisplayText('');
-        
-        // Move to next phrase after erasing
-        const nextPhraseTimer = setTimeout(() => {
-          setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % titlePhrases.length);
-          setIsTyping(true);
-        }, 500); // Short pause before showing next phrase
-        
-        return () => clearTimeout(nextPhraseTimer);
-      }, 500); // Small pause before erasing
-      
-      return () => clearTimeout(eraseTimer);
+      // Wait 2 seconds before starting to delete
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2000);
+    } 
+    else if (isDeleting) {
+      // Delete the phrase letter by letter
+      if (displayText.length > 0) {
+        timer = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, 50);
+      } else {
+        // When deletion is complete, move to the next phrase
+        setIsDeleting(false);
+        setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % titlePhrases.length);
+      }
     }
-  }, [currentPhraseIndex, isTyping, titlePhrases]);
+
+    return () => clearTimeout(timer);
+  }, [currentPhraseIndex, displayText, isDeleting, isTyping, titlePhrases]);
 
   return (
     <div className="py-8 space-y-8">
