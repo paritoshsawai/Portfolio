@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 const Home = () => {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
-  const [charIndex, setCharIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
   const [lineNumbers, setLineNumbers] = useState<string[]>([]);
   
   const titlePhrases = [
@@ -21,37 +20,33 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const currentPhrase = titlePhrases[currentPhraseIndex];
-    
-    if (charIndex < currentPhrase.length) {
-      // Continue typing the current phrase
-      const typingTimer = setTimeout(() => {
-        setDisplayText(prevText => prevText + currentPhrase.charAt(charIndex));
-        setCharIndex(charIndex + 1);
-      }, 70); // Speed of typing
+    if (isTyping) {
+      // Display the entire phrase at once
+      setDisplayText(titlePhrases[currentPhraseIndex]);
       
-      return () => clearTimeout(typingTimer);
+      // Wait before starting to erase
+      const pauseTimer = setTimeout(() => {
+        setIsTyping(false);
+      }, 2000); // 2 seconds display time
+      
+      return () => clearTimeout(pauseTimer);
     } else {
-      // Current phrase is complete
-      const pauseBeforeErase = setTimeout(() => {
-        // Start erasing
-        const eraseInterval = setInterval(() => {
-          setDisplayText(prevText => prevText.slice(0, -1));
-          
-          if (displayText.length <= 1) {
-            clearInterval(eraseInterval);
-            // Move to next phrase
-            setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % titlePhrases.length);
-            setCharIndex(0);
-          }
-        }, 50); // Speed of erasing
+      // Erase the phrase
+      const eraseTimer = setTimeout(() => {
+        setDisplayText('');
         
-        return () => clearInterval(eraseInterval);
-      }, 1500); // Pause before starting to erase
+        // Move to next phrase after erasing
+        const nextPhraseTimer = setTimeout(() => {
+          setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % titlePhrases.length);
+          setIsTyping(true);
+        }, 500); // Short pause before showing next phrase
+        
+        return () => clearTimeout(nextPhraseTimer);
+      }, 500); // Small pause before erasing
       
-      return () => clearTimeout(pauseBeforeErase);
+      return () => clearTimeout(eraseTimer);
     }
-  }, [charIndex, currentPhraseIndex, displayText.length, titlePhrases]);
+  }, [currentPhraseIndex, isTyping, titlePhrases]);
 
   return (
     <div className="py-8 space-y-8">
