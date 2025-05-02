@@ -35,10 +35,10 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      {/* Mobile menu button - moved to top-right for better spacing */}
+      {/* Mobile menu button - moved to top-left corner and only visible on mobile */}
       {isMobile && (
         <button 
-          className="fixed top-2 right-3 z-30 p-2 bg-sidebar rounded-md"
+          className="fixed top-2 left-3 z-30 p-2 bg-sidebar rounded-md"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -93,8 +93,8 @@ const Layout = () => {
         />
       )}
       
-      {/* VS Code Tabs - adjusted for mobile with more padding */}
-      <div className={`vscode-tabs ${isMobile ? 'pl-0 pr-12' : 'pl-[240px]'} mt-0`}>
+      {/* VS Code Tabs - adjusted for mobile with padding for sidebar button */}
+      <div className={`vscode-tabs ${isMobile ? 'pl-14 pr-2' : 'pl-[240px]'} mt-0`}>
         {tabs.map((tab) => (
           <Link
             key={tab.path}

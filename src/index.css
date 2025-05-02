@@ -86,7 +86,6 @@
     @apply flex overflow-x-auto;
     height: 36px;
     border-bottom: 1px solid hsl(var(--border));
-    margin-top: 10px; /* Add space for mobile menu button */
   }
   
   .vscode-tab {
@@ -165,17 +164,28 @@
     height: 22px;
     z-index: 10;
   }
+  
+  /* Cursor blinking animation */
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .animate-cursor-blink {
+    animation: cursor-blink 1s infinite;
+  }
 }
 
 /* Responsive adjustments for header and titles */
 @media (max-width: 640px) {
   .vscode-tabs {
-    margin-top: 12px;
-    padding-right: 40px; /* Make room for mobile menu button */
+    padding-left: 40px; /* Space for the menu toggle */
   }
   
   .vscode-tab {
     min-width: 80px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .text-4xl {
@@ -185,4 +195,13 @@
   .text-xl {
     @apply text-lg;
   }
+  
+  /* Ensure title text doesn't overflow */
+  .min-h-12 {
+    min-height: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
+

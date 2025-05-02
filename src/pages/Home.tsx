@@ -3,10 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 const Home = () => {
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
-  const fullText = "Software Engineer | Back-End Developer | Node.js & API Specialist";
   const [charIndex, setCharIndex] = useState(0);
   const [lineNumbers, setLineNumbers] = useState<string[]>([]);
+  
+  const titlePhrases = [
+    "Software Engineer",
+    "Back-End Developer",
+    "Node.js & API Specialist"
+  ];
 
   useEffect(() => {
     // Generate line numbers for the code block
@@ -15,15 +21,37 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (charIndex < fullText.length) {
+    const currentPhrase = titlePhrases[currentPhraseIndex];
+    
+    if (charIndex < currentPhrase.length) {
+      // Continue typing the current phrase
       const typingTimer = setTimeout(() => {
-        setDisplayText(prevText => prevText + fullText.charAt(charIndex));
+        setDisplayText(prevText => prevText + currentPhrase.charAt(charIndex));
         setCharIndex(charIndex + 1);
       }, 70); // Speed of typing
       
       return () => clearTimeout(typingTimer);
+    } else {
+      // Current phrase is complete
+      const pauseBeforeErase = setTimeout(() => {
+        // Start erasing
+        const eraseInterval = setInterval(() => {
+          setDisplayText(prevText => prevText.slice(0, -1));
+          
+          if (displayText.length <= 1) {
+            clearInterval(eraseInterval);
+            // Move to next phrase
+            setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % titlePhrases.length);
+            setCharIndex(0);
+          }
+        }, 50); // Speed of erasing
+        
+        return () => clearInterval(eraseInterval);
+      }, 1500); // Pause before starting to erase
+      
+      return () => clearTimeout(pauseBeforeErase);
     }
-  }, [charIndex, fullText]);
+  }, [charIndex, currentPhraseIndex, displayText.length, titlePhrases]);
 
   return (
     <div className="py-8 space-y-8">
