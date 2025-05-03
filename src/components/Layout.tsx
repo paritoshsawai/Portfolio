@@ -57,6 +57,10 @@ const Layout = () => {
             className="text-sidebar-foreground hover:text-white transition-colors">
             <Linkedin size={24} />
           </a>
+          <a href="mailto:paritoshsawai@gmail.com" target="_blank" rel="noopener noreferrer"
+            className="text-sidebar-foreground hover:text-white transition-colors">
+            <Mail size={24} />
+          </a>
         </div>
         
         {/* Explorer section */}
