@@ -25,20 +25,24 @@ const Home = () => {
     let timer: ReturnType<typeof setTimeout>;
 
     if (isTyping && !isDeleting) {
-      // Display the full phrase at once
-      setDisplayText(titlePhrases[currentPhraseIndex]);
-      
-      // Wait 2 seconds before starting to delete
-      timer = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2000);
+      // Implement typing animation character by character
+      if (displayText.length < titlePhrases[currentPhraseIndex].length) {
+        timer = setTimeout(() => {
+          setDisplayText(titlePhrases[currentPhraseIndex].substring(0, displayText.length + 1));
+        }, 100); // Speed of typing
+      } else {
+        // Wait after full phrase is typed before starting deletion
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 1500);
+      }
     } 
     else if (isDeleting) {
       // Delete the phrase letter by letter
       if (displayText.length > 0) {
         timer = setTimeout(() => {
           setDisplayText(displayText.slice(0, -1));
-        }, 50);
+        }, 50); // Speed of deletion
       } else {
         // When deletion is complete, move to the next phrase
         setIsDeleting(false);
