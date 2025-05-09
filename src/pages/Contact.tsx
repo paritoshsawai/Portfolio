@@ -3,11 +3,6 @@ import React from 'react';
 import CodeHeader from '../components/common/CodeHeader';
 import ContactInfo from '../components/contact/ContactInfo';
 import { useIsMobile } from '../hooks/use-mobile';
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger
-} from "@/components/ui/drawer";
 
 const Contact = () => {
   const isMobile = useIsMobile();
@@ -22,23 +17,10 @@ const Contact = () => {
       </h1>
       
       <div className="flex justify-center">
-        {/* Contact info - responsive */}
-        {isMobile ? (
-          <Drawer>
-            <DrawerTrigger className="bg-sidebar mb-6 px-4 py-2 rounded-md flex items-center justify-center w-full">
-              <span>View Contact Information</span>
-            </DrawerTrigger>
-            <DrawerContent>
-              <div className="p-6 max-h-[80vh] overflow-y-auto">
-                <ContactInfo />
-              </div>
-            </DrawerContent>
-          </Drawer>
-        ) : (
-          <div className="max-w-xl w-full">
-            <ContactInfo />
-          </div>
-        )}
+        {/* Contact info - always visible regardless of screen size */}
+        <div className="max-w-xl w-full">
+          <ContactInfo />
+        </div>
       </div>
       
       <div className="mt-8">
