@@ -9,7 +9,7 @@
     --background: 0 0% 12%;
     --foreground: 0 0% 98%;
     --sidebar: 0 0% 15%;
-    --sidebar-foreground: 0 0% 90%;  /* Increased from 80% to 90% for better visibility */
+    --sidebar-foreground: 0 0% 100%;  /* Changed to 100% (pure white) for maximum visibility */
     --active-tab: 0 0% 12%;
     --inactive-tab: 0 0% 20%;
     --inactive-tab-hover: 0 0% 25%;
@@ -109,11 +109,12 @@
   }
   
   .vscode-explorer-section {
-    @apply text-xs uppercase tracking-wide text-white py-2 px-4;
+    @apply text-xs uppercase tracking-wide text-white py-2 px-4 font-semibold;
   }
   
   .vscode-sidebar-item {
     @apply flex items-center px-4 py-1.5 text-white hover:bg-sidebar-active cursor-pointer;
+    text-shadow: 0 0 1px rgba(255,255,255,0.4);
   }
   
   .vscode-sidebar-item.active {
@@ -159,7 +160,7 @@
   }
 
   .status-bar {
-    @apply fixed bottom-0 left-0 right-0 flex justify-between items-center text-xs px-4 py-1 border-t border-border bg-sidebar text-sidebar-foreground;
+    @apply fixed bottom-0 left-0 right-0 flex justify-between items-center text-xs px-4 py-1 border-t border-border bg-sidebar text-white;
     height: 22px;
     z-index: 10;
   }
@@ -175,7 +176,7 @@
   }
 }
 
-/* Responsive adjustments for header and titles */
+// Responsive adjustments for header and titles
 @media (max-width: 640px) {
   .vscode-tabs {
     padding-left: 40px; /* Space for the menu toggle */
