@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Calendar, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink } from 'lucide-react';
 
 const ContactInfo = () => {
   return (
@@ -67,23 +67,6 @@ const ContactInfo = () => {
               <ExternalLink size={14} className="ml-1 opacity-70" />
             </a>
           </div>
-        </div>
-      </div>
-      
-      {/* Availability section */}
-      <div className="mt-8">
-        <h2 className="text-xl font-medium mb-4 flex items-center">
-          <Calendar className="mr-2 text-accent" size={20} />
-          Availability
-        </h2>
-        <div className="bg-sidebar/30 border border-border rounded-md p-4">
-          <div className="flex justify-between mb-2">
-            <span>Monday - Friday</span>
-            <span className="text-accent">9:00 AM - 6:00 PM GMT</span>
-          </div>
-          <p className="text-sm text-sidebar-foreground">
-            Currently available for full-time opportunities in the UK.
-          </p>
         </div>
       </div>
     </div>
