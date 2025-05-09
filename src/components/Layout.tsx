@@ -50,15 +50,15 @@ const Layout = () => {
         {/* Social links */}
         <div className="flex justify-center gap-3 py-3 border-b border-border">
           <a href="https://github.com/paritoshsawai" target="_blank" rel="noopener noreferrer" 
-            className="text-sidebar-foreground hover:text-white transition-colors">
+            className="text-white hover:text-accent transition-colors">
             <Github size={24} />
           </a>
           <a href="https://linkedin.com/in/paritoshsawai" target="_blank" rel="noopener noreferrer"
-            className="text-sidebar-foreground hover:text-white transition-colors">
+            className="text-white hover:text-accent transition-colors">
             <Linkedin size={24} />
           </a>
           <a href="mailto:paritoshsawai@gmail.com" target="_blank" rel="noopener noreferrer"
-            className="text-sidebar-foreground hover:text-white transition-colors">
+            className="text-white hover:text-accent transition-colors">
             <Mail size={24} />
           </a>
         </div>
@@ -84,7 +84,7 @@ const Layout = () => {
         <div className="flex-1"></div>
         
         {/* Footer */}
-        <div className="px-4 py-2 text-xs text-sidebar-foreground/70 border-t border-border">
+        <div className="px-4 py-2 text-xs text-white border-t border-border">
           Paritosh Sawai © {new Date().getFullYear()}
         </div>
       </aside>

@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +9,7 @@
     --background: 0 0% 12%;
     --foreground: 0 0% 98%;
     --sidebar: 0 0% 15%;
-    --sidebar-foreground: 0 0% 80%;
+    --sidebar-foreground: 0 0% 90%;  /* Increased from 80% to 90% for better visibility */
     --active-tab: 0 0% 12%;
     --inactive-tab: 0 0% 20%;
     --inactive-tab-hover: 0 0% 25%;
@@ -77,7 +76,7 @@
 @layer components {
   /* VS Code specific styles */
   .vscode-sidebar {
-    @apply bg-sidebar text-sidebar-foreground border-r border-border flex flex-col h-screen fixed left-0 top-0;
+    @apply bg-sidebar text-white border-r border-border flex flex-col h-screen fixed left-0 top-0;
     width: 240px;
     z-index: 10;
   }
@@ -110,11 +109,11 @@
   }
   
   .vscode-explorer-section {
-    @apply text-xs uppercase tracking-wide text-sidebar-foreground/70 py-2 px-4;
+    @apply text-xs uppercase tracking-wide text-white py-2 px-4;
   }
   
   .vscode-sidebar-item {
-    @apply flex items-center px-4 py-1.5 text-sidebar-foreground hover:bg-sidebar-active cursor-pointer;
+    @apply flex items-center px-4 py-1.5 text-white hover:bg-sidebar-active cursor-pointer;
   }
   
   .vscode-sidebar-item.active {
@@ -204,4 +203,3 @@
     align-items: flex-start;
   }
 }
-
