@@ -33,6 +33,13 @@ const Layout = () => {
   // Find the active tab
   const currentTab = tabs.find(tab => tab.path === location.pathname) || tabs[0];
 
+  // Function to handle navigation and close mobile menu
+  const handleNavigate = () => {
+    if (isMobile) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       {/* Mobile menu button - moved to top-left corner and only visible on mobile */}
@@ -73,7 +80,7 @@ const Layout = () => {
               key={tab.path}
               to={tab.path}
               className={`vscode-sidebar-item ${location.pathname === tab.path ? 'active' : ''}`}
-              onClick={() => setMobileMenuOpen(false)} // Close menu on click for mobile
+              onClick={handleNavigate}
             >
               {tab.icon}
               <span className="ml-2">{tab.label.replace('.js', '')}</span>
