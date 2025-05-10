@@ -73,17 +73,17 @@ const Layout = () => {
         {/* Explorer section */}
         <div className="vscode-explorer-section font-bold">Explorer</div>
         
-        {/* Navigation items */}
+        {/* Navigation items - Ensuring text is white */}
         <nav className="flex flex-col">
           {tabs.map((tab) => (
             <Link
               key={tab.path}
               to={tab.path}
-              className={`vscode-sidebar-item ${location.pathname === tab.path ? 'active' : ''}`}
+              className={`vscode-sidebar-item ${location.pathname === tab.path ? 'active' : ''} text-white`}
               onClick={handleNavigate}
             >
               {tab.icon}
-              <span className="ml-2">{tab.label.replace('.js', '')}</span>
+              <span className="ml-2 text-white">{tab.label.replace('.js', '')}</span>
             </Link>
           ))}
         </nav>
