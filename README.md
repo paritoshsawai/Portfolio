@@ -1,74 +1,92 @@
-# Welcome to your Lovable project
+# Paritosh Sawai – Portfolio
 
-## Project info
+[![Live Site](https://img.shields.io/badge/Live%20Site-Visit-green?style=flat-square&logo=vercel)](https://portfolio-paritoshsawais-projects.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-black?style=flat-square&logo=github)](https://github.com/paritoshsawai/Portfolio)
 
-**URL**: https://lovable.dev/projects/72064cc3-4081-438f-b2a2-6ccf95db581f
+Welcome to my developer portfolio! 🚀  
+This website showcases my skills, experience, and projects as a software developer and analyst.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- **VS Code-inspired UI:** Familiar interface for developers
+- **Responsive Design:** Works beautifully on desktop and mobile
+- **Project Gallery:** Highlights my key technical projects
+- **Experience & Education:** Timeline of my professional and academic journey
+- **Contact Section:** Easy way to reach out
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/72064cc3-4081-438f-b2a2-6ccf95db581f) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend:** React, Vite, TypeScript
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **Deployment:** [Vercel](https://vercel.com/)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Live Demo
 
-Follow these steps:
+Check out the live website here:  
+👉 [portfolio-paritoshsawais-projects.vercel.app](https://portfolio-paritoshsawais-projects.vercel.app/)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📸 Screenshots
 
-# Step 3: Install the necessary dependencies.
-npm i
+![Portfolio Screenshot](https://user-images.githubusercontent.com/your-github-username/your-screenshot.png) <!-- Replace with your screenshot URL -->
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+---
+
+## 📂 Getting Started
+
+**Clone the repo:**
+git clone https://github.com/paritoshsawai/Portfolio.git
+cd Portfolio
+
+text
+
+**Install dependencies:**
+npm install
+
+text
+
+**Run locally:**
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+text
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 📄 Folder Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+src/
+components/ # Reusable UI components
+pages/ # Main site pages (Home, About, Projects, etc.)
+hooks/ # Custom React hooks
+assets/ # Images and static assets
+App.tsx # Main app component
+main.tsx # Entry point
 
-## What technologies are used for this project?
+text
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📝 License
 
-## How can I deploy this project?
+This project is open source and available under the [MIT License](LICENSE).
 
-Simply open [Lovable](https://lovable.dev/projects/72064cc3-4081-438f-b2a2-6ccf95db581f) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 🙋‍♂️ About Me
 
-Yes, you can!
+**Paritosh Sawai**  
+- [GitHub](https://github.com/paritoshsawai)
+- [LinkedIn](https://linkedin.com/in/paritoshsawai)
+- [Email](mailto:paritoshsawai@gmail.com)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
-# Portfolio
+> _Thank you for visiting my portfolio! Feel free to fork, star, or reach out with feedback or collaboration ideas._
