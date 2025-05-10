@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -79,7 +78,7 @@
   .vscode-sidebar {
     @apply bg-sidebar text-white border-r border-border flex flex-col h-screen fixed left-0 top-0;
     width: 240px;
-    z-index: 10;
+    z-index: 25;
   }
   
   .vscode-tabs {
@@ -204,7 +203,7 @@
 
   /* Force proper z-index ordering for mobile sidebar */
   .vscode-sidebar {
-    z-index: 20;
+    z-index: 25;
   }
 
   .text-4xl {

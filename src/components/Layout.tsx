@@ -100,7 +100,7 @@ const Layout = () => {
       {/* Overlay to close sidebar on mobile when clicked outside */}
       {isMobile && mobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-5"
+          className="fixed inset-0 bg-black/50 z-4"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
