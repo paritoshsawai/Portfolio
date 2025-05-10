@@ -41,7 +41,7 @@ const Layout = () => {
           className="fixed top-2 left-3 z-30 p-2 bg-sidebar rounded-md"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileMenuOpen ? <X size={20} className="text-white" /> : <Menu size={20} className="text-white" />}
         </button>
       )}
       
@@ -64,7 +64,7 @@ const Layout = () => {
         </div>
         
         {/* Explorer section */}
-        <div className="vscode-explorer-section">Explorer</div>
+        <div className="vscode-explorer-section font-bold">Explorer</div>
         
         {/* Navigation items */}
         <nav className="flex flex-col">
@@ -73,9 +73,10 @@ const Layout = () => {
               key={tab.path}
               to={tab.path}
               className={`vscode-sidebar-item ${location.pathname === tab.path ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)} // Close menu on click for mobile
             >
               {tab.icon}
-              {tab.label.replace('.js', '')}
+              <span className="ml-2">{tab.label.replace('.js', '')}</span>
             </Link>
           ))}
         </nav>
@@ -106,7 +107,7 @@ const Layout = () => {
             className={`vscode-tab ${location.pathname === tab.path ? 'active' : ''}`}
           >
             {tab.icon}
-            <span className="ml-2 truncate max-w-[80px]">{tab.label}</span>
+            <span className="ml-2 truncate max-w-[80px] text-white">{tab.label}</span>
           </Link>
         ))}
       </div>

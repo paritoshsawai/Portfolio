@@ -89,7 +89,7 @@
   }
   
   .vscode-tab {
-    @apply flex items-center px-4 border-r border-border bg-inactive-tab text-sidebar-foreground;
+    @apply flex items-center px-4 border-r border-border bg-inactive-tab text-white;
     height: 36px;
     min-width: 100px;
     max-width: 180px;
@@ -110,7 +110,8 @@
   }
   
   .vscode-explorer-section {
-    @apply text-xs uppercase tracking-wide text-white py-2 px-4 font-semibold;
+    @apply text-xs uppercase tracking-wide text-white py-2 px-4 font-bold;
+    text-shadow: 0 0 1px rgba(255,255,255,0.5);
   }
   
   .vscode-sidebar-item {
