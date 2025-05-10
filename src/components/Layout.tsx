@@ -45,10 +45,10 @@ const Layout = () => {
       {/* Mobile menu button - moved to top-left corner and only visible on mobile */}
       {isMobile && (
         <button 
-          className="fixed top-2 left-3 z-30 p-2 bg-sidebar rounded-md"
+          className="fixed top-0.1 left-0.1 z-30 p-2 bg-sidebar rounded-md"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X size={20} className="text-white" /> : <Menu size={20} className="text-white" />}
+          {mobileMenuOpen ? <X size={20} className="text-white" /> : <Menu size={25} className="text-white" />}
         </button>
       )}
       

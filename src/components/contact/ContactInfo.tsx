@@ -10,15 +10,13 @@ const ContactInfo = () => {
         <div className="flex">
           <div className="py-3 px-2 text-sidebar-foreground/60 bg-sidebar/40 text-xs font-mono text-right select-none">
             <div className="pr-2">01</div>
-            <div className="pr-2">02</div>
-            <div className="pr-2">03</div>
-            <div className="pr-2">04</div>
-            <div className="pr-2">05</div>
+            
+            
           </div>
           
           <pre className="py-3 px-4 overflow-x-auto flex-1 text-sm">
             <span className="code-comment">/**
- * Get in touch with me through
+ * Get in touch with me through 
  * this contact form or using the
  * contact information provided
  */</span>

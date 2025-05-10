@@ -19,7 +19,7 @@ const Projects = () => {
       description: "A comprehensive MERN stack application for tracking inventory levels, orders, sales, and deliveries. Features include role-based authentication, dashboard with metrics, product management, real-time tracking, and multi-location support.",
       technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Material-UI", "Chart.js", "JWT", "AWS"],
       github: "https://github.com/paritoshsawai/Inventory-Management-System",
-      liveDemo: "https://inventory-management-system-1dxj3x4u4-paritoshsawais-projects.vercel.app/",
+      liveDemo: "https://inventory-management-system-theta-neon.vercel.app/",
       date: "2024"
     },
     {
@@ -35,7 +35,7 @@ const Projects = () => {
       description: "A simple weather application that displays current weather information for any city. Fetches data from the OpenWeatherMap API and shows details such as temperature, humidity, weather description, and a corresponding emoji.",
       technologies: ["JavaScript", "HTML", "CSS", "Web APIs", "OpenWeatherMap API"],
       github: "https://github.com/paritoshsawai/Get-Weather-Info",
-      liveDemo: "#",
+      liveDemo: "https://paritoshsawai.github.io/Get-Weather-Info/",
       date: "Oct 2024"
     },
     {
@@ -43,7 +43,7 @@ const Projects = () => {
       description: "A simple, responsive calculator providing basic arithmetic operations like addition, subtraction, multiplication, and division. Features a clean UI with real-time result display and a responsive design for various screen sizes.",
       technologies: ["JavaScript", "HTML5", "CSS3"],
       github: "https://github.com/paritoshsawai/Calcuator-with-JAVASCRIPT",
-      liveDemo: "#",
+      liveDemo: "https://paritoshsawai.github.io/Calcuator-with-JAVASCRIPT/",
       date: "Oct 2024"
     },
     {
@@ -67,7 +67,7 @@ const Projects = () => {
       description: "A tool that generates random passwords based on specified criteria such as length, inclusion of lowercase letters, uppercase letters, numbers, and symbols. Includes validation to ensure a valid length and character selection.",
       technologies: ["JavaScript", "HTML", "CSS"],
       github: "https://github.com/paritoshsawai/Random-Password-Genrator-with-Javascript",
-      liveDemo: "#",
+      liveDemo: "paritoshsawai.github.io/Random-Password-Genrator-with-Javascript/",
       date: "2024"
     },
     {
@@ -75,15 +75,15 @@ const Projects = () => {
       description: "A responsive web application that converts temperatures between Celsius, Fahrenheit, and Kelvin with real-time conversion and a clean, intuitive interface. Optimized for mobile devices with a responsive layout.",
       technologies: ["JavaScript", "HTML5", "CSS3"],
       github: "https://github.com/paritoshsawai/Tempreture-converter",
-      liveDemo: "#",
+      liveDemo: "https://paritoshsawai.github.io/Tempreture-converter/",
       date: "2024"
     },
     {
       title: "Travel Bloom",
       description: "A dynamic travel website allowing users to search for destinations, learn about the company, and submit travel requirements through an interactive form. Features destination search using AJAX, company information, and a form for travel preferences.",
       technologies: ["JavaScript (ES6+)", "HTML5", "CSS3", "AJAX", "REST API", "DOM Manipulation"],
-      github: "#",
-      liveDemo: "#",
+      github: "https://github.com/paritoshsawai/Paritoshsawai.Javascript-final-project.io",
+      liveDemo: "https://paritoshsawai.github.io/Paritoshsawai.Javascript-final-project.io/travel_recommendation.html",
       date: "2024"
     }
   ];
