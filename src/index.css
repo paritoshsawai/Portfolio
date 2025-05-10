@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -199,6 +200,11 @@
   .vscode-sidebar-item.active,
   .vscode-sidebar-item.active span {
     color: white !important;
+  }
+
+  /* Force proper z-index ordering for mobile sidebar */
+  .vscode-sidebar {
+    z-index: 20;
   }
 
   .text-4xl {

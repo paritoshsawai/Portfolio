@@ -79,11 +79,11 @@ const Layout = () => {
             <Link
               key={tab.path}
               to={tab.path}
-              className={`vscode-sidebar-item ${location.pathname === tab.path ? 'active' : ''} text-white`}
+              className={`vscode-sidebar-item ${location.pathname === tab.path ? 'active' : ''}`}
               onClick={handleNavigate}
             >
               {tab.icon}
-              <span className="ml-2 text-white">{tab.label.replace('.js', '')}</span>
+              <span className="ml-2">{tab.label.replace('.js', '')}</span>
             </Link>
           ))}
         </nav>
@@ -100,7 +100,7 @@ const Layout = () => {
       {/* Overlay to close sidebar on mobile when clicked outside */}
       {isMobile && mobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-20"
+          className="fixed inset-0 bg-black/50 z-5"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
