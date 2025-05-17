@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, File } from 'lucide-react';
 
 const ContactInfo = () => {
   return (
@@ -64,6 +64,18 @@ const ContactInfo = () => {
               linkedin.com/in/paritoshsawai
               <ExternalLink size={14} className="ml-1 opacity-70" />
             </a>
+          </div>
+        </div>
+
+        <div className="bg-sidebar/30 p-4 border border-border rounded-md hover:bg-sidebar/40 transition-all duration-300">
+          <div className="flex items-center">
+            <File size={20} className="text-accent mr-3" />
+            <a 
+              href="https://drive.google.com/uc?export=download&id=1qHMpbNVRpTQciWvqdyYEDNXWYJBCyRtc" 
+               className="">
+                Download Resume
+            </a>
+
           </div>
         </div>
       </div>
